@@ -4,7 +4,16 @@
                     Main
                   </li>
                   <li class="active-page">
-                    <a href="index.html"><i data-feather="home"></i>Dashboard</a>
+                    <a href="index.php"><i data-feather="home"></i>Dashboard</a>
+                  </li>
+                  <li class="active-page">
+                    <a href="perspektif.php"><i data-feather="home"></i>Perspektif</a>
+                  </li>
+                  <li class="active-page">
+                    <a href="peta_strategi.php"><i data-feather="home"></i>Peta Strategi</a>
+                  </li>
+                  <li class="active-page">
+                    <a href="action_plan.php"><i data-feather="home"></i>Action Plan</a>
                   </li>
                   
                 </ul>
