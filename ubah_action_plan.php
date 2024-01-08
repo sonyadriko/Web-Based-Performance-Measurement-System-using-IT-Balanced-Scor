@@ -6,6 +6,15 @@
   }
   $queryPerspektif = mysqli_query($conn, "SELECT * FROM perspektif");
   $perspektifData = mysqli_fetch_all($queryPerspektif, MYSQLI_ASSOC);
+
+  $id_data = $_GET['GetID'];
+    $query = mysqli_query($conn, "SELECT * FROM action_plan join perspektif on action_plan.id_perspektif = perspektif.id_perspektif WHERE id_action_plan = '".$id_data."'");
+    while($row = mysqli_fetch_assoc($query)){
+        $id_p = $row['id_perspektif'];
+        $nama_p = $row['nama_perspektif'];
+        $peta = $row['peta_strategi'];
+        $hasil = $row['hasil_action_plan'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,46 +50,33 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Tambah Data Peta Strategi</h5>
-                            <form action="tambah_peta_strategi.php" method="post">
+                            <h5 class="card-title">Tambah Data Action Plan</h5>
+                            <form action="update_action_plan.php?id=<?php echo $id_data ?>" method="post">
                                 <div class="mb-3">
                                     <label for="selectPerspektif" class="form-label">Perspektif</label>
-                                    <select class="form-control" id="selectPerspektif" name="selectPerspektif">
+                                    <!-- <select class="form-control" id="selectPerspektif" name="selectPerspektif">
                                         <?php
                                         foreach ($perspektifData as $alternatif) {
                                             echo '<option value="' . $alternatif['id_perspektif'] . '">' . $alternatif['nama_perspektif'] . '</option>';
                                         }
                                         ?>
-                                    </select>
+                                    </select> -->
+                                    <input type="text" class="form-control" id="selectPerspektif" name="selectPerspektif" value="<?php echo $nama_p?>" aria-describedby="selectPerspektif" readonly disabled>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="inputNamaPeta" class="form-label">Nama Peta Strategi</label>
-                                    <input type="text" class="form-control" id="inputNamaPeta" name="inputNamaPeta" aria-describedby="inputNamaPeta" required>
+                                    <label for="inputPetaStrategi" class="form-label">Peta Strategi</label>
+                                    <input type="text" class="form-control" id="inputPetaStrategi" name="inputPetaStrategi" value="<?php echo $peta?>" aria-describedby="inputPetaStrategi">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="inputSasaranStrategi" class="form-label">Sasaran Strategi</label>
-                                    <input type="text" class="form-control" id="inputSasaranStrategi" name="inputSasaranStrategi" aria-describedby="inputSasaranStrategi" required>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="inputIndikatorKinerja" class="form-label">Indikator Kinerja</label>
-                                    <input type="text" class="form-control" id="inputIndikatorKinerja" name="inputIndikatorKinerja" aria-describedby="inputIndikatorKinerja" required>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="inputPembobotan" class="form-label">Pembobotan</label>
-                                    <input type="text" class="form-control" id="inputPembobotan" name="inputPembobotan" aria-describedby="inputPembobotan" required>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="inputTarget" class="form-label">Target</label>
-                                    <input type="text" class="form-control" id="inputTarget" name="inputTarget" aria-describedby="inputTarget" required>
+                                    <label for="inputActionPlan" class="form-label">Action Plan</label>
+                                    <input type="text" class="form-control" id="inputActionPlan" name="inputActionPlan" value="<?php echo $hasil ?>" aria-describedby="inputActionPlan">
                                 </div>
 
                                 <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                             </form>
+
 
                         </div>
                     </div>
@@ -101,28 +97,25 @@ include 'koneksi.php';
 
 if (isset($_POST['submit'])) {
     $id_perspektif = $_POST['selectPerspektif'];
-    $nama_peta = mysqli_real_escape_string($conn, $_POST['inputNamaPeta']);
-    $sasaran_strategi = mysqli_real_escape_string($conn, $_POST['inputSasaranStrategi']);
-    $indikator_kinerja = mysqli_real_escape_string($conn, $_POST['inputIndikatorKinerja']);
-    $pembobotan = mysqli_real_escape_string($conn, $_POST['inputPembobotan']);
-    $target = mysqli_real_escape_string($conn, $_POST['inputTarget']);
+    $nama_peta = mysqli_real_escape_string($conn, $_POST['inputPetaStrategi']);
+    $action_plan = mysqli_real_escape_string($conn, $_POST['inputActionPlan']);
 
-    // Insert data into 'peta_strategi' table using prepared statements
-    $insertData = $conn->prepare("INSERT INTO peta_strategi (id_peta_strategi, id_perspektif, nama_peta_strategi, sasaran_strategi, indikator_kinerja, pembobotan, target) 
-                                VALUES (NULL, ?, ?, ?, ?, ?, ?)");
+    // Insert data into your_table_name table using prepared statements
+    $insertData = $conn->prepare("INSERT INTO action_plan (id_perspektif, peta_strategi, hasil_action_plan) 
+                                VALUES (?, ?, ?)");
 
     // Bind parameters
-    $insertData->bind_param("ssssss", $id_perspektif, $nama_peta, $sasaran_strategi, $indikator_kinerja, $pembobotan, $target);
+    $insertData->bind_param("sss", $id_perspektif, $nama_peta, $action_plan);
 
     // Execute the prepared statement
     $insertResult = $insertData->execute();
 
     if ($insertResult) {
-        echo "<script>alert('Berhasil menambah data.')</script>";
-        echo "<script>window.location.href = 'peta_strategi.php';</script>";
+        echo "<script>alert('Berhasil menambah data Action Plan.')</script>";
+        echo "<script>window.location.href = 'action_plan.php';</script>";
     } else {
         // Handle the error
-        echo "<script>alert('Gagal menambah data.')</script>";
+        echo "<script>alert('Gagal menambah data Action Plan.')</script>";
         echo "<script>console.error('Error: " . $insertData->error . "')</script>";
     }
 
