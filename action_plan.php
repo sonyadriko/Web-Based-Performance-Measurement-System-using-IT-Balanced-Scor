@@ -17,7 +17,7 @@
         <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         
         <!-- Title -->
-        <title>Peta Strategi</title>
+        <title>Action Plan</title>
 
         <!-- Styles -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700,800&display=swap" rel="stylesheet">
@@ -60,6 +60,7 @@
                               <th scope="col">Perspektif</th>
                               <th scope="col">Peta Strategi</th>
                               <th scope="col">Action Plan</th>
+                              <th scope="col">Actions</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -79,10 +80,10 @@
                                 <td class="text-truncate"><?php echo $nama ?></td>
                                 <td class="text-truncate"><?php echo $sasaran ?></td>
                                 <!-- <td class="text-truncate"><?php echo $indikator ?></td> -->
-                                <!-- <td class="text-truncate">
-                                    <a href='ubah_barang.php?GetID=<?php echo $id ?>' style="text-decoration: none; list-style: none;"><input type='submit' value='Ubah' id='editbtn' class="btn btn-primary btn-user" ></a>
-                                    <a href='delete_barang.php?Del=<?php echo $id ?>' style="text-decoration: none; list-style: none;"><input type='submit' value='Hapus' id='delbtn' class="btn btn-primary btn-user" ></a>                       
-                                </td> -->
+                                <td class="text-truncate">
+                                    <a href='ubah_action_plan.php?GetID=<?php echo $id ?>' style="text-decoration: none; list-style: none;"><input type='submit' value='Ubah' id='editbtn' class="btn btn-primary btn-user" ></a>
+                                    <a href='delete_action_plan.php?Del=<?php echo $id ?>' style="text-decoration: none; list-style: none;"><input type='submit' value='Hapus' id='delbtn' class="btn btn-primary btn-user" ></a>                       
+                                </td>
                             </tr>
                             <?php
                             $no++;

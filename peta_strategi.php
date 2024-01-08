@@ -57,12 +57,13 @@
                               <thead>
                             <tr>
                               <th scope="col">No</th>
-                              <th scope="col">Nama Perspektif</th>
+                              <th scope="col">Nama Perspektif</th>  
                               <th scope="col">Peta Strategi</th>
                               <th scope="col">Sasaran Strategi</th>
                               <th scope="col">Indikator Kinerja</th>
                               <th scope="col">Pembobotan</th>
                               <th scope="col">Target</th>
+                              <th scope="col">Action Plan</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -87,10 +88,10 @@
                                 <td class="text-truncate"><?php echo $indikator ?></td>
                                 <td class="text-truncate"><?php echo $pembobotan ?></td>
                                 <td class="text-truncate"><?php echo $target ?></td>
-                                <!-- <td class="text-truncate">
-                                    <a href='ubah_barang.php?GetID=<?php echo $id ?>' style="text-decoration: none; list-style: none;"><input type='submit' value='Ubah' id='editbtn' class="btn btn-primary btn-user" ></a>
-                                    <a href='delete_barang.php?Del=<?php echo $id ?>' style="text-decoration: none; list-style: none;"><input type='submit' value='Hapus' id='delbtn' class="btn btn-primary btn-user" ></a>                       
-                                </td> -->
+                                <td class="text-truncate">
+                                    <a href='ubah_peta.php?GetID=<?php echo $id ?>' style="text-decoration: none; list-style: none;"><input type='submit' value='Ubah' id='editbtn' class="btn btn-primary btn-user" ></a>
+                                    <a href='delete_peta_strategi.php?Del=<?php echo $id ?>' style="text-decoration: none; list-style: none;"><input type='submit' value='Hapus' id='delbtn' class="btn btn-primary btn-user" ></a>                       
+                                </td>
                             </tr>
                             <?php
                             $no++;

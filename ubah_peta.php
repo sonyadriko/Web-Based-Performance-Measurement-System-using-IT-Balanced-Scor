@@ -6,6 +6,18 @@
   }
   $queryPerspektif = mysqli_query($conn, "SELECT * FROM perspektif");
   $perspektifData = mysqli_fetch_all($queryPerspektif, MYSQLI_ASSOC);
+
+  $id_data = $_GET['GetID'];
+    $query = mysqli_query($conn, "SELECT * FROM peta_strategi join perspektif on peta_strategi.id_perspektif = perspektif.id_perspektif WHERE id_peta_strategi = '".$id_data."'");
+    while($row = mysqli_fetch_assoc($query)){
+        $id_p = $row['id_perspektif'];
+        $nama_p = $row['nama_perspektif'];
+        $nama = $row['nama_peta_strategi'];
+        $sasaran = $row['sasaran_strategi'];
+        $indikator = $row['indikator_kinerja'];
+        $pembobotan = $row['pembobotan'];
+        $target = $row['target'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,42 +53,43 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Tambah Data Peta Strategi</h5>
-                            <form action="tambah_peta_strategi.php" method="post">
+                            <h5 class="card-title">Edit Data Peta Strategi</h5>
+                            <form action="update_peta.php?id=<?php echo $id_data ?>" method="post">
                                 <div class="mb-3">
                                     <label for="selectPerspektif" class="form-label">Perspektif</label>
-                                    <select class="form-control" id="selectPerspektif" name="selectPerspektif">
+                                    <!-- <select class="form-control" id="selectPerspektif" name="selectPerspektif">
                                         <?php
                                         foreach ($perspektifData as $alternatif) {
                                             echo '<option value="' . $alternatif['id_perspektif'] . '">' . $alternatif['nama_perspektif'] . '</option>';
                                         }
                                         ?>
-                                    </select>
+                                    </select> -->
+                                    <input type="text" class="form-control" id="selectPerspektif" name="selectPerspektif" value="<?php echo $nama_p ?>" aria-describedby="inputNamaPeta" readonly disabled  >
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="inputNamaPeta" class="form-label">Nama Peta Strategi</label>
-                                    <input type="text" class="form-control" id="inputNamaPeta" name="inputNamaPeta" aria-describedby="inputNamaPeta" required>
+                                    <input type="text" class="form-control" id="inputNamaPeta" name="inputNamaPeta" value="<?php echo $nama ?>" aria-describedby="inputNamaPeta">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="inputSasaranStrategi" class="form-label">Sasaran Strategi</label>
-                                    <input type="text" class="form-control" id="inputSasaranStrategi" name="inputSasaranStrategi" aria-describedby="inputSasaranStrategi" required>
+                                    <input type="text" class="form-control" id="inputSasaranStrategi" name="inputSasaranStrategi" value="<?php echo $sasaran ?>" aria-describedby="inputSasaranStrategi">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="inputIndikatorKinerja" class="form-label">Indikator Kinerja</label>
-                                    <input type="text" class="form-control" id="inputIndikatorKinerja" name="inputIndikatorKinerja" aria-describedby="inputIndikatorKinerja" required>
+                                    <input type="text" class="form-control" id="inputIndikatorKinerja" name="inputIndikatorKinerja" value="<?php echo $indikator?>" aria-describedby="inputIndikatorKinerja">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="inputPembobotan" class="form-label">Pembobotan</label>
-                                    <input type="text" class="form-control" id="inputPembobotan" name="inputPembobotan" aria-describedby="inputPembobotan" required>
+                                    <input type="text" class="form-control" id="inputPembobotan" name="inputPembobotan" value="<?php echo $pembobotan ?>" aria-describedby="inputPembobotan">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="inputTarget" class="form-label">Target</label>
-                                    <input type="text" class="form-control" id="inputTarget" name="inputTarget" aria-describedby="inputTarget" required>
+                                    <input type="text" class="form-control" id="inputTarget" name="inputTarget" value="<?php echo $target?> " aria-describedby="inputTarget">
                                 </div>
 
                                 <button type="submit" class="btn btn-primary" name="submit">Submit</button>
