@@ -56,8 +56,6 @@ $groupedData = groupData($data);
         <meta name="description" content="Responsive Admin Dashboard Template">
         <meta name="keywords" content="admin,dashboard">
         <meta name="author" content="stacks">
-        <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        
         <!-- Title -->
         <title>Peta Strategi</title>
 
@@ -73,15 +71,8 @@ $groupedData = groupData($data);
         <link href="assets/css/main.min.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet">
 
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
     </head>
     <body>
-
         <div class="page-container">
            <?php include'header.php' ?>
             <?php include'sidebar.php' ?>
@@ -93,7 +84,10 @@ $groupedData = groupData($data);
                         <div class="card-body">
                             <h5 class="card-title">Data Hitung KPI</h5>
                             <!-- <p class="card-description">Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p> -->
-                            <a href="hitung_kpi.php" class="btn btn-primary btn-user">Hitung KPI </a>
+                            <!-- <a href="hitung_kpi.php" class="btn btn-primary btn-user">Hitung KPI </a> -->
+
+                          <form method="post" action="handle_realisasi.php">
+
                             <div class="table-responsive">
                             <table class="table table-striped">
                               <thead>
@@ -105,27 +99,40 @@ $groupedData = groupData($data);
                             <th scope="col">Indikator Kinerja</th>
                                 <th scope="col">Pembobotan</th>
                               <th scope="col">Target</th>
+                              <th scope="col">Realisasi</th>
                             </tr>
                           </thead>
                           <tbody>
                           <?php foreach ($groupedData as $perspektif => $strategis): ?>
-                <?php foreach ($strategis as $strategi): ?>
-                    <tr>
-                        <?php if ($strategi == reset($strategis)): ?>
-                            <td rowspan="<?php echo count($strategis); ?>"><?php echo $perspektif; ?></td>
-                        <?php endif; ?>
-                        <td><?php echo $strategi['Peta Strategi']; ?></td>
-                        <td><?php echo $strategi['Sasaran Strategi']; ?></td>
-                        <td><?php echo $strategi['Indikator Kinerja']; ?></td>
-                        <td><?php echo $strategi['Pembobotan']; ?></td>
-                        <td><?php echo $strategi['Target']; ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            <?php endforeach; ?>
+                            <?php foreach ($strategis as $strategi): ?>
+                                <tr>
+                                    <?php if ($strategi == reset($strategis)): ?>
+                                        <td rowspan="<?php echo count($strategis); ?>"><?php echo $perspektif; ?></td>
+                                    <?php endif; ?>
+                                    <td><?php echo $strategi['Peta Strategi']; ?></td>
+                                    <td><?php echo $strategi['Sasaran Strategi']; ?></td>
+                                    <td><?php echo $strategi['Indikator Kinerja']; ?></td>
+                                    <td><?php echo $strategi['Pembobotan']; ?></td>
+                                    <td><?php echo $strategi['Target']; ?></td>
+                                    <td>
+                                    
+                                        <input type="text" class="form-control" id="inputRealisasi" name="inputRealisasi[]" aria-describedby="inputRealisasi" required>
+                                        <input type="hidden" name="inputPetaStrategi[]" value="<?php echo $strategi['Peta Strategi']; ?>">
+                                </td>
+                                    <!-- <input type="hidden" name="totalPetaStrategi" value="<?php echo count($groupedData); ?>"> -->
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endforeach; ?>
                           </tbody>
                         
                           </table>
                             </div>
+                            <input type="hidden" name="totalPetaStrategi" value="<?php echo count($groupedData); ?>">
+                            
+                            <button type="submit" class="btn btn-primary">Submit Realisasi</button>
+
+                            </form>
+
                         </div>
                     </div>
                 </div>

@@ -19,7 +19,10 @@
       <?php } ?>
               <?php if($_SESSION['role'] == '2') { ?>
                 <li class="active-page">
-                    <a href="hitung.php"><i data-feather="home"></i>Hitung</a>
+                    <a href="hitung2.php"><i data-feather="home"></i>Hitung</a>
+                  </li>
+                  <li class="active-page">
+                    <a href="hasil.php"><i data-feather="home"></i>Hasil</a>
                   </li>
       <?php } ?>
                   

@@ -7,6 +7,7 @@
     $indikator = $_POST['inputIndikatorKinerja'];
     $pembobotan = $_POST['inputPembobotan'];
     $target = $_POST['inputTarget'];
+    $nilai_target = $_POST['contohTarget'];
 
     // Assuming your table name is 'peta_strategi'
     $query = "UPDATE peta_strategi SET 
@@ -14,7 +15,8 @@
                 sasaran_strategi = '".$sasaran."', 
                 indikator_kinerja = '".$indikator."', 
                 pembobotan = '".$pembobotan."', 
-                target = '".$target."'
+                target = '".$target."',
+                nilai_target = '".$nilai_target."'
               WHERE id_peta_strategi = '".$id_data."'";
 
     $result = mysqli_query($conn, $query);

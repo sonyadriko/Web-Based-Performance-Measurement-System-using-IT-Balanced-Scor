@@ -17,6 +17,7 @@
         $indikator = $row['indikator_kinerja'];
         $pembobotan = $row['pembobotan'];
         $target = $row['target'];
+        $nilai_target = $row['nilai_target'];
     }
 ?>
 <!DOCTYPE html>
@@ -92,6 +93,11 @@
                                     <input type="text" class="form-control" id="inputTarget" name="inputTarget" value="<?php echo $target?> " aria-describedby="inputTarget">
                                 </div>
 
+                                <div class="mb-3">
+                                    <label for="contohTarget" class="form-label">Contoh Target</label>
+                                    <input type="text" class="form-control" id="contohTarget" name="contohTarget" value="<?php echo $nilai_target?> " aria-describedby="inputTarget">
+                                </div>
+
                                 <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                             </form>
 
@@ -119,13 +125,14 @@ if (isset($_POST['submit'])) {
     $indikator_kinerja = mysqli_real_escape_string($conn, $_POST['inputIndikatorKinerja']);
     $pembobotan = mysqli_real_escape_string($conn, $_POST['inputPembobotan']);
     $target = mysqli_real_escape_string($conn, $_POST['inputTarget']);
+    $nilai = mysqli_real_escape_string($conn, $_POST['contohTarget']);
 
     // Insert data into 'peta_strategi' table using prepared statements
-    $insertData = $conn->prepare("INSERT INTO peta_strategi (id_peta_strategi, id_perspektif, nama_peta_strategi, sasaran_strategi, indikator_kinerja, pembobotan, target) 
-                                VALUES (NULL, ?, ?, ?, ?, ?, ?)");
+    $insertData = $conn->prepare("INSERT INTO peta_strategi (id_peta_strategi, id_perspektif, nama_peta_strategi, sasaran_strategi, indikator_kinerja, pembobotan, target, nilai_target) 
+                                VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)");
 
     // Bind parameters
-    $insertData->bind_param("ssssss", $id_perspektif, $nama_peta, $sasaran_strategi, $indikator_kinerja, $pembobotan, $target);
+    $insertData->bind_param("ssssss", $id_perspektif, $nama_peta, $sasaran_strategi, $indikator_kinerja, $pembobotan, $target, $nilai_target);
 
     // Execute the prepared statement
     $insertResult = $insertData->execute();

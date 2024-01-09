@@ -4,6 +4,19 @@
   if (!isset($_SESSION['id_admin'])) {
       header("Location: login.php");
   }
+
+
+
+// Mengambil data dari database
+$query = "SELECT * FROM peta_strategi JOIN perspektif ON perspektif.id_perspektif = peta_strategi.id_perspektif";
+$result = mysqli_query($conn, $query);
+
+// Mengubah hasil query menjadi array
+$data = array();
+while ($row = mysqli_fetch_assoc($result)) {
+    $data[] = $row;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,8 +27,6 @@
         <meta name="description" content="Responsive Admin Dashboard Template">
         <meta name="keywords" content="admin,dashboard">
         <meta name="author" content="stacks">
-        <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        
         <!-- Title -->
         <title>Peta Strategi</title>
 
@@ -31,15 +42,8 @@
         <link href="assets/css/main.min.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet">
 
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
     </head>
     <body>
-
         <div class="page-container">
            <?php include'header.php' ?>
             <?php include'sidebar.php' ?>
@@ -49,22 +53,23 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Data Peta Strategi</h5>
-                            <p class="card-description">Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>
-                            <a href="tambah_peta_strategi.php" class="btn btn-primary btn-user">Tambah Peta Strategi </a>
+                            <h5 class="card-title">Data Hitung KPI</h5>
+                            <!-- <p class="card-description">Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p> -->
+                            <!-- <a href="hitung_kpi.php" class="btn btn-primary btn-user">Hitung KPI </a> -->
+
+                          <form method="post" action="handle_realisasi2.php">
+
                             <div class="table-responsive">
                             <table class="table table-striped">
                               <thead>
                             <tr>
-                              <th scope="col">No</th>
-                              <th scope="col">Nama Perspektif</th>  
+                              <!-- <th scope="col">No</th> -->
+                              <th scope="col">Perspektif</th>
                               <th scope="col">Peta Strategi</th>
-                              <th scope="col">Sasaran Strategi</th>
-                              <th scope="col">Indikator Kinerja</th>
-                              <th scope="col">Pembobotan</th>
+                                <th scope="col">Pembobotan</th>
                               <th scope="col">Target</th>
-                              <th scope="col">Ex Target</th>
-                              <th scope="col">Action Plan</th>
+                              <th scope="col">Nilai Target</th>
+                              <th scope="col">Realisasi</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -83,18 +88,17 @@
                                 $nilai_target = $display['nilai_target'];   
                          
                             ?>
-                                <td class="text-truncate"><?php echo $no ?></td>
+                                <!-- <td class="text-truncate"><?php echo $no ?></td> -->
                                 <td class="text-truncate"><?php echo $perspektif ?></td>
-                                <td class="text-truncate"><?php echo $nama ?></td>
-                                <td class="text-truncate"><?php echo $sasaran ?></td>
-                                <td class="text-truncate"><?php echo $indikator ?></td>
+                                <td ><?php echo $nama ?></td>
                                 <td class="text-truncate"><?php echo $pembobotan ?></td>
                                 <td class="text-truncate"><?php echo $target ?></td>
                                 <td class="text-truncate"><?php echo $nilai_target ?></td>
-                                <td class="text-truncate">
-                                    <a href='ubah_peta.php?GetID=<?php echo $id ?>' style="text-decoration: none; list-style: none;"><input type='submit' value='Ubah' id='editbtn' class="btn btn-primary btn-user" ></a>
-                                    <a href='delete_peta_strategi.php?Del=<?php echo $id ?>' style="text-decoration: none; list-style: none;"><input type='submit' value='Hapus' id='delbtn' class="btn btn-primary btn-user" ></a>                       
+                                <input type="hidden" name="idPetaStrategi[]" value="<?php echo $id; ?>">
+                                <td>
+                                    <input type="text" class="form-control" name="inputRealisasi[]" aria-describedby="inputRealisasi" required>
                                 </td>
+                              
                             </tr>
                             <?php
                             $no++;
@@ -104,6 +108,10 @@
                         
                           </table>
                             </div>
+                            <button type="submit" class="btn btn-primary">Submit Realisasi</button>
+
+                            </form>
+
                         </div>
                     </div>
                 </div>
