@@ -90,9 +90,10 @@ while ($row = mysqli_fetch_assoc($result)) {
                                 $realisasi = $display['realisasi'];
                                 $convert_t = str_replace('.', '', $target);
                                 $convert_r = str_replace('.', '', $realisasi);
-                                $hasil = $convert_r/ ($convert_t * $pembobotan);
-                                $hasil2 = $hasil * 100;
-                                $hasil3 = round($hasil2, 1);
+                                // $hasil = $convert_r/ ($convert_t * $pembobotan);
+                                $hasil = ($convert_t * $pembobotan)/ ($convert_r);
+                                // $hasil2 = $hasil * 100;
+                                $hasil3 = round($hasil, 1);
                                 $totalHasil += $hasil3; // Update the sum
                                 // echo $convert_r;
                             ?>
