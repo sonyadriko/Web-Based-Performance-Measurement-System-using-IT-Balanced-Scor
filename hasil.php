@@ -4,9 +4,6 @@
   if (!isset($_SESSION['id_admin'])) {
       header("Location: login.php");
   }
-
-
-
 // Mengambil data dari database
 $query = "SELECT * FROM peta_strategi JOIN perspektif ON perspektif.id_perspektif = peta_strategi.id_perspektif";
 $result = mysqli_query($conn, $query);
@@ -54,79 +51,66 @@ while ($row = mysqli_fetch_assoc($result)) {
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Data Hitung KPI</h5>
-                            <!-- <p class="card-description">Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p> -->
-                            <!-- <a href="hitung_kpi.php" class="btn btn-primary btn-user">Hitung KPI </a> -->
+                            <form method="post" action="hasilscoresave.php">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Perspektif</th>
+                    <th scope="col">Peta Strategi</th>
+                    <th scope="col">Pembobotan</th>
+                    <th scope="col">Target</th>
+                    <th scope="col">Realisasi</th>
+                    <th scope="col">Hasil</th>
+                    <!-- <th scope="col">Save</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $no = 1;
+                $totalHasil = 0;
+                $get_data = mysqli_query($conn, "SELECT * FROM peta_strategi JOIN perspektif ON perspektif.id_perspektif = peta_strategi.id_perspektif");
+                while ($display = mysqli_fetch_array($get_data)) {
+                    $id = $display['id_peta_strategi'];
+                    $perspektif = $display['nama_perspektif'];
+                    $nama = $display['nama_peta_strategi'];
+                    $pembobotan = $display['pembobotan'];
+                    $target = $display['target'];
+                    $realisasi = $display['realisasi'];
+                    $convert_t = str_replace('.', '', $target);
+                    $convert_r = str_replace('.', '', $realisasi);
+                    $hasil = $convert_r / $convert_t * $pembobotan;
+                    $hasil3 = round($hasil, 1);
+                    $totalHasil += $hasil3;
+                ?>
+                    <tr>
+                        <td class="text-truncate"><?php echo $perspektif ?></td>
+                        <td><?php echo $nama ?></td>
+                        <td class="text-truncate"><?php echo $pembobotan ?></td>
+                        <td class="text-truncate"><?php echo $target ?></td>
+                        <td class="text-truncate"><?php echo $realisasi ?></td>
+                        <td class="text-truncate"><?php echo $hasil3 ?></td>
+                        <!-- <td class="text-truncate"><input type="checkbox" name="idPetaStrategi[]" value="<?php echo $id; ?>"></td> -->
+                    </tr>
+                <?php
+                    $no++;
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+    <p style="font-weight:bold">Total Hasil: <?php echo $totalHasil; ?></p>
+    <button type="submit" name="saveButton" class="btn btn-primary">Save Data</button>
+</form>
 
-                          <form method="post" action="handle_realisasi2.php">
-
-                            <div class="table-responsive">
-                            <table class="table table-striped">
-                              <thead>
-                            <tr>
-                              <!-- <th scope="col">No</th> -->
-                              <th scope="col">Perspektif</th>
-                              <th scope="col">Peta Strategi</th>
-                                <th scope="col">Pembobotan</th>
-                              <th scope="col">Target</th>
-                              <th scope="col">Realisasi</th>
-                              <th scope="col">Hasil</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                          <?php 
-                            $no = 1;
-                            $totalHasil = 0;
-                            // $get_data = mysqli_query($conn, "select * from peta_strategi JOIN perspektif.id_perspektif = peta_strategi.id_perspektif");
-                            $get_data = mysqli_query($conn, "SELECT * FROM peta_strategi JOIN perspektif ON perspektif.id_perspektif = peta_strategi.id_perspektif");
-                            while($display = mysqli_fetch_array($get_data)) {
-                                $id = $display['id_peta_strategi'];
-                                $perspektif = $display['nama_perspektif'];
-                                $nama = $display['nama_peta_strategi'];   
-                                $sasaran = $display['sasaran_strategi'];   
-                                $indikator = $display['indikator_kinerja'];   
-                                $pembobotan = $display['pembobotan']; 
-                                $nilai_target = $display['nilai_target'];
-                                $target = $display['target'];   
-                                $realisasi = $display['realisasi'];
-                                $convert_t = str_replace('.', '', $target);
-                                $convert_r = str_replace('.', '', $realisasi);
-                                $hasil = $convert_r/ ($convert_t * $pembobotan);
-                                $hasil2 = $hasil * 100;
-                                $hasil3 = round($hasil2, 1);
-                                $totalHasil += $hasil3; // Update the sum
-                                // echo $convert_r;
-                            ?>
-                                <!-- <td class="text-truncate"><?php echo $no ?></td> -->
-                                <td class="text-truncate"><?php echo $perspektif ?></td>
-                                <td ><?php echo $nama ?></td>
-                                <td class="text-truncate"><?php echo $pembobotan ?></td>
-                                <td class="text-truncate"><?php echo $target ?></td>
-                                <!-- <input type="hidden" name="idPetaStrategi[]" value="<?php echo $id; ?>"> -->
-                                <td class="text-truncate"><?php echo $realisasi ?></td>
-                                <td class="text-truncate"><?php echo $hasil3 ?></td>
-                              
-                            </tr>
-                            <?php
-                            $no++;
-                                }
-                            ?>
-                          </tbody>
-                        
-                          </table>
-                            </div>
-                            <!-- <button type="submit" class="btn btn-primary">Submit Realisasi</button> -->
-
-                            </form>
-                            <p style="font-weight:bold">Total Hasil: <?php echo $totalHasil; ?></p>
+                          
                         </div>
                     </div>
                 </div>
             </div>
             </div>
         </div>
-        
         <!-- Javascripts -->
-        
         <?php include'js.php' ?>
        
     </body>
