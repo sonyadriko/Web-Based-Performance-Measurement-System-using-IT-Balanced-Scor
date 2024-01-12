@@ -51,6 +51,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Data Hitung KPI</h5>
+
                             <form method="post" action="hasilscoresave.php">
     <div class="table-responsive">
         <table class="table table-striped">
@@ -101,8 +102,9 @@ while ($row = mysqli_fetch_assoc($result)) {
     </div>
     <p style="font-weight:bold">Total Hasil: <?php echo $totalHasil; ?></p>
     <button type="submit" name="saveButton" class="btn btn-primary">Save Data</button>
+            </div>
 </form>
-
+                          
                           
                         </div>
                     </div>
