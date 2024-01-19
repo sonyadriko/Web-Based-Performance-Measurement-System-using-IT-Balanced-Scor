@@ -8,27 +8,27 @@
                   </li>
               <?php if($_SESSION['role'] == '1') { ?>
                   <li class="active-page">
-                    <a href="perspektif.php"><i data-feather="home"></i>Perspektif</a>
+                    <a href="perspektif.php"><i data-feather="archive"></i>Perspektif</a>
                   </li>
                   <li class="active-page">
-                    <a href="peta_strategi.php"><i data-feather="home"></i>Peta Strategi</a>
+                    <a href="peta_strategi.php"><i data-feather="layers"></i>Peta Strategi</a>
                   </li>
                   <li class="active-page">
-                    <a href="action_plan.php"><i data-feather="home"></i>Action Plan</a>
+                    <a href="action_plan.php"><i data-feather="package"></i>Action Plan</a>
                   </li>
                   <li class="active-page">
-                    <a href="hitung2.php"><i data-feather="home"></i>Hitung</a>
+                    <a href="hitung2.php"><i data-feather="book"></i>Hitung</a>
                   </li>
                   <li class="active-page">
-                    <a href="hasil.php"><i data-feather="home"></i>Hasil</a>
+                    <a href="hasil.php"><i data-feather="smile"></i>Hasil</a>
                   </li>
       <?php } ?>
               <?php if($_SESSION['role'] == '2') { ?>
                 <li class="active-page">
-                    <a href="hitung2.php"><i data-feather="home"></i>Hitung</a>
+                    <a href="hitung2.php"><i data-feather="book"></i>Hitung</a>
                   </li>
                   <li class="active-page">
-                    <a href="hasil.php"><i data-feather="home"></i>Hasil</a>
+                    <a href="hasil.php"><i data-feather="smile"></i>Hasil</a>
                   </li>
       <?php } ?>
                   
