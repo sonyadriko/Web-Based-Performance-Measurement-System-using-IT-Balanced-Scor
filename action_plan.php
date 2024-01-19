@@ -39,70 +39,60 @@
         <![endif]-->
     </head>
     <body>
-
         <div class="page-container">
-           <?php include'header.php' ?>
+            <?php include'header.php' ?>
             <?php include'sidebar.php' ?>
             <div class="page-content">
-              <div class="main-wrapper">
-              <div class="row">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Data Action Plan</h5>
-                            <p class="card-description">Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>
-                            <a href="tambah_action_plan.php" class="btn btn-primary btn-user">Tambah Action Plan </a>
-                            <div class="table-responsive">
-                            <table class="table table-striped">
-                              <thead>
-                            <tr>
-                              <th scope="col">No</th>
-                              <th scope="col">Perspektif</th>
-                              <th scope="col">Peta Strategi</th>
-                              <th scope="col">Action Plan</th>
-                              <th scope="col">Actions</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                          <?php 
-                            $no = 1;
-                            // $get_data = mysqli_query($conn, "select * from peta_strategi JOIN perspektif.id_perspektif = peta_strategi.id_perspektif");
-                            $get_data = mysqli_query($conn, "SELECT * FROM action_plan JOIN perspektif ON perspektif.id_perspektif = action_plan.id_perspektif");
-                            while($display = mysqli_fetch_array($get_data)) {
-                                $id = $display['id_action_plan'];
-                                $perspektif = $display['nama_perspektif'];
-                                $nama = $display['peta_strategi'];   
-                                $sasaran = $display['hasil_action_plan'];   
-                         
-                            ?>
-                                <td class="text-truncate"><?php echo $no ?></td>
-                                <td class="text-truncate"><?php echo $perspektif ?></td>
-                                <td class="text-truncate"><?php echo $nama ?></td>
-                                <td class="text-truncate"><?php echo $sasaran ?></td>
-                                <!-- <td class="text-truncate"><?php echo $indikator ?></td> -->
-                                <td class="text-truncate">
-                                    <a href='ubah_action_plan.php?GetID=<?php echo $id ?>' style="text-decoration: none; list-style: none;"><input type='submit' value='Ubah' id='editbtn' class="btn btn-primary btn-user" ></a>
-                                    <a href='delete_action_plan.php?Del=<?php echo $id ?>' style="text-decoration: none; list-style: none;"><input type='submit' value='Hapus' id='delbtn' class="btn btn-primary btn-user" ></a>                       
-                                </td>
-                            </tr>
-                            <?php
-                            $no++;
-                                }
-                            ?>
-                          </tbody>
-                        
-                          </table>
+                <div class="main-wrapper">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Data Action Plan</h5>
+                                    <!-- <p class="card-description">Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p> -->
+                                    <a href="tambah_action_plan.php" class="btn btn-primary btn-user">Tambah Action Plan </a>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">No</th>
+                                                        <th scope="col">Peta Strategi</th>
+                                                        <th scope="col">Action Plan</th>
+                                                        <th scope="col">Actions</th>
+                                                    </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php 
+                                                $no = 1;
+                                                $get_data = mysqli_query($conn, "SELECT * FROM action_plan JOIN peta_strategi ON peta_strategi.id_peta_strategi = action_plan.id_peta_strategi");
+                                                while($display = mysqli_fetch_array($get_data)) {
+                                                    $id = $display['id_action_plan'];
+                                                    $nama = $display['nama_peta_strategi'];   
+                                                    $sasaran = $display['hasil_action_plan'];   
+                                                ?>
+                                                    <td class="text-truncate"><?php echo $no ?></td>
+                                                    <!-- <td class="text-truncate"><?php echo $perspektif ?></td> -->
+                                                    <td class="text-truncate"><?php echo $nama ?></td>
+                                                    <td><?php echo $sasaran ?></td>
+                                                    <!-- <td class="text-truncate"><?php echo $indikator ?></td> -->
+                                                    <td class="text-truncate">
+                                                        <a href='ubah_action_plan.php?GetID=<?php echo $id ?>' style="text-decoration: none; list-style: none;"><input type='submit' value='Ubah' id='editbtn' class="btn btn-primary btn-user" ></a>
+                                                        <a href='delete_action_plan.php?Del=<?php echo $id ?>' style="text-decoration: none; list-style: none;"><input type='submit' value='Hapus' id='delbtn' class="btn btn-primary btn-user" ></a>                       
+                                                    </td>
+                                                </tr>
+                                                <?php
+                                                $no++;
+                                                    }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
-        </div>
-        
-        <!-- Javascripts -->
-        
         <?php include'js.php' ?>
-       
     </body>
 </html>

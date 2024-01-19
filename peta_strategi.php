@@ -50,7 +50,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Data Peta Strategi</h5>
-                            <p class="card-description">Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>
+                            <!-- <p class="card-description">Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p> -->
                             <a href="tambah_peta_strategi.php" class="btn btn-primary btn-user">Tambah Peta Strategi </a>
                             <div class="table-responsive">
                             <table class="table table-striped">
@@ -70,6 +70,7 @@
                           <tbody>
                           <?php 
                             $no = 1;
+                            $totalPembobotan = 0; // Inisialisasi total pembobotan
                             // $get_data = mysqli_query($conn, "select * from peta_strategi JOIN perspektif.id_perspektif = peta_strategi.id_perspektif");
                             $get_data = mysqli_query($conn, "SELECT * FROM peta_strategi JOIN perspektif ON perspektif.id_perspektif = peta_strategi.id_perspektif");
                             while($display = mysqli_fetch_array($get_data)) {
@@ -80,8 +81,8 @@
                                 $indikator = $display['indikator_kinerja'];   
                                 $pembobotan = $display['pembobotan'];   
                                 $target = $display['target'];   
-                                $nilai_target = $display['nilai_target'];   
-                         
+                                $nilai_target = $display['nilai_target'];  
+                                $totalPembobotan += $pembobotan; // Akumulasi total pembobotan
                             ?>
                                 <td class="text-truncate"><?php echo $no ?></td>
                                 <td class="text-truncate"><?php echo $perspektif ?></td>
@@ -104,6 +105,18 @@
                         
                           </table>
                             </div>
+                            <br>
+                               <!-- Menampilkan total pembobotan di luar tabel -->
+                            
+                               <div>
+                                    <?php
+                                    if ($totalPembobotan != 100) {
+                                        echo '<span style="color: red;">Bobot sekarang = ' . $totalPembobotan . ', Bobot harus 100</span>';
+                                    } else {
+                                        echo '<span style="color: green;">Total Pembobotan: ' . $totalPembobotan . '</span>';
+                                    }
+                                    ?>
+                                </div>
                         </div>
                     </div>
                 </div>

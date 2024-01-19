@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Redirect or display a success message
-    header("Location: index.php");
+    header("Location: hasil.php");
     exit();
 }
 ?>

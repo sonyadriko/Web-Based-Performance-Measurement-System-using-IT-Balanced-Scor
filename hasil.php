@@ -26,6 +26,13 @@ while ($row = mysqli_fetch_assoc($result)) {
         <meta name="author" content="stacks">
         <!-- Title -->
         <title>Peta Strategi</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.9/justgage.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/raphael@2.1.4/dist/raphael.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/justgage@1.2.9/dist/justgage.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/raphael/2.1.4/raphael.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/justgage/1.2.9/justgage.min.js"></script>
 
         <!-- Styles -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700,800&display=swap" rel="stylesheet">
@@ -64,7 +71,6 @@ while ($row = mysqli_fetch_assoc($result)) {
                                                 <th scope="col">Realisasi</th>
                                                 <th scope="col">Hasil</th>
                                                 <th scope="col">Action Plan</th>
-                                                <!-- <th scope="col">Save</th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -91,7 +97,8 @@ while ($row = mysqli_fetch_assoc($result)) {
                                                     $actionPlanResult = mysqli_fetch_assoc($actionPlanQuery);
                                             
                                                     // Display action plan or a default message
-                                                    $actionPlan = ($actionPlanResult) ? $actionPlanResult['hasil_action_plan'] : "No action plan available.";
+                                                    // $actionPlan = ($actionPlanResult) ? $actionPlanResult['hasil_action_plan'] : "No action plan available.";
+                                                    $actionPlan = ($actionPlanResult) ? '<strong>' . $actionPlanResult['hasil_action_plan'] . '</strong>' : "<strong>No action plan available.</strong>";
                                                 } else {
                                                     $actionPlan = "No action plan needed.";
                                                 }
@@ -104,7 +111,6 @@ while ($row = mysqli_fetch_assoc($result)) {
                                                     <td class="text-truncate"><?php echo $realisasi ?></td>
                                                     <td class="text-truncate"><?php echo $hasil3 ?></td>
                                                     <td><?php echo $actionPlan ?></td>
-                                                    <!-- <td class="text-truncate"><input type="checkbox" name="idPetaStrategi[]" value="<?php echo $id; ?>"></td> -->
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -114,6 +120,28 @@ while ($row = mysqli_fetch_assoc($result)) {
                                     </table>
                                 </div>
                                 <p style="font-weight:bold">Total Hasil: <?php echo $totalHasil; ?></p>
+                                <?php
+$totalHasilFormatted = sprintf("%.1f", $totalHasil); // Format nilai dengan satu digit desimal
+?>
+                                <!-- <?php echo $totalHasilFormatted ?> -->
+                                <?php
+// Tentukan palet warna berdasarkan nilai totalHasil
+if ($totalHasil >= 90) {
+    $color = "#00FF00"; // Hijau Tua
+} elseif ($totalHasil >= 80) {
+    $color = "#00FF80"; // Hijau Muda
+} elseif ($totalHasil >= 70) {
+    $color = "#FFFF00"; // Kuning
+} elseif ($totalHasil >= 60) {
+    $color = "#FFA500"; // Orange
+} else {
+    $color = "#FF0000"; // Merah
+}
+?>
+                                <div id="gauge" style="width: 300px; height: 200px;"></div>
+                                <!-- <canvas id="scoreChart" width="400" height="200"></canvas> -->
+                                <!-- <div id="scoreGauge" style="width: 300px; height: 200px;"></div> -->
+
                                 <!-- <button type="submit" name="saveButton" class="btn btn-primary">Save Data</button> -->
                                 </div>
                             </form>
@@ -131,3 +159,29 @@ while ($row = mysqli_fetch_assoc($result)) {
        
     </body>
 </html>
+<script>
+    // Menghitung persentase
+    var percentage = <?php echo $totalHasilFormatted; ?>;
+    
+    // Inisialisasi dan konfigurasi gauge dengan jarum panah
+    var gauge = new JustGage({
+        id: "gauge",
+        value: percentage,
+        min: 0,
+        max: 100,
+        title: "Score",
+        label: "%",
+        valueFontColor: "#000000", // Warna jarum panah (hitam)
+        levelColors: ["#FF0000", "#FFA500", "#FFFF00", "#00FF80", "#00FF00"], // Skala warna sesuai dengan rentang persentase
+        pointer: false, // Menampilkan jarum panah
+        pointerOptions: {
+            toplength: -15,
+            bottomlength: 10,
+            bottomwidth: 12,
+            color: "#000000" // Warna jarum panah (hitam)
+        },
+        gaugeWidthScale: 0.6,
+        counter: true,
+        relativeGaugeSize: true,
+    });
+</script>

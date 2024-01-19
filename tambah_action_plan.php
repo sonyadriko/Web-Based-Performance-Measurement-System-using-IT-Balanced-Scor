@@ -4,7 +4,7 @@
   if (!isset($_SESSION['id_admin'])) {
       header("Location: login.php");
   }
-  $queryPerspektif = mysqli_query($conn, "SELECT * FROM perspektif");
+  $queryPerspektif = mysqli_query($conn, "SELECT * FROM peta_strategi");
   $perspektifData = mysqli_fetch_all($queryPerspektif, MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
@@ -48,16 +48,16 @@
                                     <select class="form-control" id="selectPerspektif" name="selectPerspektif">
                                         <?php
                                         foreach ($perspektifData as $alternatif) {
-                                            echo '<option value="' . $alternatif['id_perspektif'] . '">' . $alternatif['nama_perspektif'] . '</option>';
+                                            echo '<option value="' . $alternatif['id_peta_strategi'] . '">' . $alternatif['nama_peta_strategi'] . '</option>';
                                         }
                                         ?>
                                     </select>
                                 </div>
 
-                                <div class="mb-3">
+                                <!-- <div class="mb-3">
                                     <label for="inputPetaStrategi" class="form-label">Peta Strategi</label>
                                     <input type="text" class="form-control" id="inputPetaStrategi" name="inputPetaStrategi" aria-describedby="inputPetaStrategi">
-                                </div>
+                                </div> -->
 
                                 <div class="mb-3">
                                     <label for="inputActionPlan" class="form-label">Action Plan</label>
@@ -87,15 +87,15 @@ include 'koneksi.php';
 
 if (isset($_POST['submit'])) {
     $id_perspektif = $_POST['selectPerspektif'];
-    $nama_peta = mysqli_real_escape_string($conn, $_POST['inputPetaStrategi']);
+    // $nama_peta = mysqli_real_escape_string($conn, $_POST['inputPetaStrategi']);
     $action_plan = mysqli_real_escape_string($conn, $_POST['inputActionPlan']);
 
     // Insert data into your_table_name table using prepared statements
-    $insertData = $conn->prepare("INSERT INTO action_plan (id_perspektif, peta_strategi, hasil_action_plan) 
-                                VALUES (?, ?, ?)");
+    $insertData = $conn->prepare("INSERT INTO action_plan (id_peta_strategi, hasil_action_plan) 
+                                VALUES (?, ?)");
 
     // Bind parameters
-    $insertData->bind_param("sss", $id_perspektif, $nama_peta, $action_plan);
+    $insertData->bind_param("ss", $id_perspektif, $action_plan);
 
     // Execute the prepared statement
     $insertResult = $insertData->execute();
