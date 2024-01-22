@@ -119,7 +119,21 @@ while ($row = mysqli_fetch_assoc($result)) {
                                         </tbody>
                                     </table>
                                 </div>
+                                <?php
+                                if ($totalHasil >= 76 && $totalHasil <= 100) {
+                                    $kategori = "Baik";
+                                } elseif ($totalHasil >= 51 && $totalHasil <= 75) {
+                                    $kategori = "Cukup Baik";
+                                } elseif ($totalHasil >= 25 && $totalHasil <= 50) {
+                                    $kategori = "Kurang Baik";
+                                } else {
+                                    $kategori = "Tidak Dikategorikan";
+                                }
+                                
+                                ?>
                                 <p style="font-weight:bold">Total Hasil: <?php echo $totalHasil; ?></p>
+                                <p style="font-weight:bold">Kategori: <?php echo $kategori; ?></p>
+
                                 <?php
 $totalHasilFormatted = sprintf("%.1f", $totalHasil); // Format nilai dengan satu digit desimal
 ?>
@@ -139,10 +153,6 @@ if ($totalHasil >= 90) {
 }
 ?>
                                 <div id="gauge" style="width: 300px; height: 200px;"></div>
-                                <!-- <canvas id="scoreChart" width="400" height="200"></canvas> -->
-                                <!-- <div id="scoreGauge" style="width: 300px; height: 200px;"></div> -->
-
-                                <!-- <button type="submit" name="saveButton" class="btn btn-primary">Save Data</button> -->
                                 </div>
                             </form>
                             <div class="table-responsive">
