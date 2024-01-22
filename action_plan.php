@@ -31,12 +31,6 @@
         <link href="assets/css/main.min.css" rel="stylesheet">
         <link href="assets/css/custom.css" rel="stylesheet">
 
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
     </head>
     <body>
         <div class="page-container">
@@ -49,7 +43,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Data Action Plan</h5>
-                                    <!-- <p class="card-description">Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p> -->
+                                    <p class="card-description">Action plan atau bisa disebut dengan program kerja atau kegiatan untuk mencapai tujuan dari masing-masing indikator peta strategi yang telah di tentukan.</p>
                                     <a href="tambah_action_plan.php" class="btn btn-primary btn-user">Tambah Action Plan </a>
                                         <div class="table-responsive">
                                             <table class="table table-striped">

@@ -28,7 +28,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         <meta name="keywords" content="admin,dashboard">
         <meta name="author" content="stacks">
         <!-- Title -->
-        <title>Peta Strategi</title>
+        <title>Hitung</title>
 
         <!-- Styles -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700,800&display=swap" rel="stylesheet">
@@ -54,9 +54,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Data Hitung KPI</h5>
-                            <!-- <p class="card-description">Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p> -->
-                            <!-- <a href="hitung_kpi.php" class="btn btn-primary btn-user">Hitung KPI </a> -->
-
+                            <p class="card-description">Berikut adalam form input perhitungan BSC.</p>
                           <form method="post" action="handle_realisasi2.php">
 
                             <div class="table-responsive">

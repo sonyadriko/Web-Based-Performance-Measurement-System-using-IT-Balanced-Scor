@@ -32,7 +32,7 @@ html {
 body {
     background-color: #f3f4f7;
     font-weight: normal;
-    color: #5b5b5b;
+    color: #000000;
     line-height: 1.6;
 }
 
@@ -636,7 +636,7 @@ h6 {
 }
 
 .text-dark {
-    color: #5b5b5b!important;
+    color: #000000!important;
 }
 
 
@@ -687,7 +687,7 @@ h6 {
 }
 
 .page-header .navbar #navbarNav #leftNav > li > a {
-    color: #5b5b5b;
+    color: #000000;
     font-size: 14px;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
@@ -746,7 +746,7 @@ body.sidebar-hidden .page-header .navbar #navbarNav #leftNav > li > a#sidebar-to
 .page-header .navbar #headerNav > ul > li > a {
     padding: 9px 0;
     margin: 0 10px;
-    color: #5b5b5b;
+    color: #000000;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
@@ -844,7 +844,7 @@ body.sidebar-hidden .page-header .navbar #navbarNav #leftNav > li > a#sidebar-to
     display: block;
     padding: 0 5px;
     display: inline-block;
-    color: #5b5b5b;
+    color: #000000;
     font-weight: 400;
 }
 
@@ -942,7 +942,7 @@ body.sidebar-hidden .page-header .navbar #navbarNav #leftNav > li > a#sidebar-to
 
 .page-sidebar .accordion-menu > li > a {
     display: block;
-    color: #5b5b5b;
+    color: #000000;
     -webkit-transition: all .1s ease-in-out;
     -moz-transition: all .1s ease-in-out;
     -o-transition: all .1s ease-in-out;
@@ -978,7 +978,7 @@ body.sidebar-hidden .page-header .navbar #navbarNav #leftNav > li > a#sidebar-to
     line-height: 40px;
     text-align: center;
     vertical-align: text-top;
-    color: #5b5b5b;
+    color: #000000;
     margin-right: 15px;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
@@ -1016,7 +1016,7 @@ body.sidebar-hidden .page-header .navbar #navbarNav #leftNav > li > a#sidebar-to
 }
 
 .page-sidebar .accordion-menu li ul li a {
-    color: #5b5b5b;
+    color: #000000;
     display: block;
     padding: 10px 15px;
     font-size: 14px;
@@ -1085,7 +1085,7 @@ body.sidebar-hidden .main-wrapper {
     border: 0;
     border-radius: 10px;
     box-shadow: 0 0 1.25rem rgba(31,45,61,.08);
-    color: #5b5b5b;
+    color: #000000;
     font-family: 'Poppins', sans-serif!important;
 }
 
@@ -1134,7 +1134,7 @@ body.sidebar-hidden .main-wrapper {
 
 .card-title {
     font-size: 18px;
-    color: #5b5b5b;
+    color: #000000;
     margin-bottom: 30px;
 }
 
@@ -1224,7 +1224,7 @@ body.sidebar-hidden .main-wrapper {
 }
 
 .list-group-item-dark {
-    color: #5b5b5b;
+    color: #000000;
     background-color: #D1D3E0;
     font-weight: 500;
 }
@@ -1260,11 +1260,11 @@ body.sidebar-hidden .main-wrapper {
 
 .card.bg-secondary .card-header {
     background-color: #E4E6EF;
-    color: #5b5b5b;
+    color: #000000;
 }
 
 .card.bg-secondary .card-body {
-    color: #5b5b5b;
+    color: #000000;
 }
 
 .card.bg-success .card-header {
@@ -1404,7 +1404,7 @@ body.sidebar-hidden .main-wrapper {
 .alert-dark {
     background-color: #D1D3E0;
     border-color: #D1D3E0;
-    color: #5b5b5b;
+    color: #000000;
 }
 
 .alert-primary.outline-alert {
@@ -1521,7 +1521,7 @@ body.sidebar-hidden .main-wrapper {
 
 .badge.bg-dark {
     background-color: #D1D3E0!important;
-    color: #5b5b5b;
+    color: #000000;
 }
 
 
@@ -1671,7 +1671,7 @@ body.sidebar-hidden .main-wrapper {
 .btn-dark:disabled  {
     background-color: #D1D3E0;
     border-color: #D1D3E0;
-    color: #5b5b5b;
+    color: #000000;
 }
 
 .btn-dark:hover,
@@ -1681,7 +1681,7 @@ body.sidebar-hidden .main-wrapper {
 .btn-dark:not(:disabled):not(.disabled):active {
     background-color: #D1D3E0;
     border-color: #D1D3E0;
-    color: #5b5b5b;
+    color: #000000;
     box-shadow: 0 7px 23px -8px #D1D3E0;
 }
 
@@ -1712,7 +1712,7 @@ body.sidebar-hidden .main-wrapper {
 }
 
 .btn-outline-secondary {
-    color: #5b5b5b;
+    color: #000000;
     border-color: #E4E6EF;
 }
 
@@ -1721,7 +1721,7 @@ body.sidebar-hidden .main-wrapper {
 .btn-outline-secondary:focus,
 .btn-outline-secondary:not(:disabled):not(.disabled).active,
 .btn-outline-secondary:not(:disabled):not(.disabled):active  {
-    color: #5b5b5b;
+    color: #000000;
     border-color: #E4E6EF;
     background-color: #E4E6EF;
     box-shadow: 0 7px 23px -8px #E4E6EF;
@@ -1792,7 +1792,7 @@ body.sidebar-hidden .main-wrapper {
 }
 
 .btn-outline-dark {
-    color: #5b5b5b;
+    color: #000000;
     border-color: #D1D3E0;
 }
 
@@ -1801,7 +1801,7 @@ body.sidebar-hidden .main-wrapper {
 .btn-outline-dark:focus,
 .btn-outline-dark:not(:disabled):not(.disabled).active,
 .btn-outline-dark:not(:disabled):not(.disabled):active  {
-    color: #5b5b5b;
+    color: #000000;
     border-color: #D1D3E0;
     background-color: #D1D3E0;
     box-shadow: 0 7px 23px -8px #D1D3E0;
@@ -1845,7 +1845,7 @@ body.modal-open {
 }
 
 .dropdown-item {
-    color: #5b5b5b;
+    color: #000000;
     padding: 9px 26px;
 }
 
@@ -1863,7 +1863,7 @@ body.modal-open {
 }
 
 .dropdown-menu-dark .dropdown-item {
-    color: #5b5b5b;
+    color: #000000;
 }
 
 .dropdown-menu-dark .dropdown-item:hover {
@@ -2032,7 +2032,7 @@ body.modal-open {
 /* Tables */
 
 .table {
-    color: #5b5b5b;
+    color: #000000;
     border-color: #E4E6EF;
 }
 
@@ -2120,7 +2120,7 @@ body.modal-open {
     --bs-table-active-color: #000;
     --bs-table-hover-bg: #F3F6F9;
     --bs-table-hover-color: #000;
-    color: #5b5b5b;
+    color: #000000;
     border-color: #F3F6F9;
 }
 
@@ -2132,7 +2132,7 @@ body.modal-open {
     --bs-table-active-color: #fff;
     --bs-table-hover-bg: #D1D3E0;
     --bs-table-hover-color: #fff;
-    color: #5b5b5b;
+    color: #000000;
     border-color: #D1D3E0;
 }
 
@@ -2183,7 +2183,7 @@ body.modal-open {
 }
 
 .table-striped>tbody>tr:nth-of-type(odd) {
-    color: #5b5b5b;
+    color: #000000;
 }
 
 
@@ -2353,7 +2353,7 @@ body.error-page .container {
 }
 
 .invoice-table a {
-    color: #5b5b5b;
+    color: #000000;
     margin-right: 5px;
 }
 
@@ -2443,7 +2443,7 @@ body.error-page .container {
 }
 
 .email-list-item {
-    color: #5b5b5b;
+    color: #000000;
 }
 
 .email-list-item .email-author img {
@@ -2487,7 +2487,7 @@ body.error-page .container {
 .email-list li a:focus,
 .email-menu li a:active,
 .email-menu li a:focus {
-    color: #5b5b5b;
+    color: #000000;
 }
 
 .email-list li a {
@@ -2627,7 +2627,7 @@ body.error-page .container {
 }
 
 .file-manager-menu ul li a {
-    color: #5b5b5b;
+    color: #000000;
     -webkit-transition: all .1s ease-in-out;
     -moz-transition: all .1s ease-in-out;
     -o-transition: all .1s ease-in-out;
@@ -2695,7 +2695,7 @@ body.error-page .container {
 .folder .folder-info a {
     margin-bottom: 0;
     display: block;
-    color: #5b5b5b;
+    color: #000000;
 }
 
 .folder .folder-info span {
@@ -2830,7 +2830,7 @@ ul.profile-about-list li.profile-about-list-buttons {
 .story-list .story .story-info span.story-author {
     display: block;
     line-height: 20px;
-    color: #5b5b5b;
+    color: #000000;
 }
 
 .story-list .story .story-info span.story-time {
@@ -2913,7 +2913,7 @@ ul.profile-about-list li.profile-about-list-buttons {
     float: left;
     padding: 5px 8px;
     font-size: 15px;
-    color: #5b5b5b;
+    color: #000000;
     margin-right: 10px;
 }
 
@@ -2966,7 +2966,7 @@ ul.profile-about-list li.profile-about-list-buttons {
 }
 
 .post-comments .post-comm .comment-container span.comment-author {
-    color: #5b5b5b;
+    color: #000000;
     display: block;
     line-height: 30px;
 }
@@ -2974,7 +2974,7 @@ ul.profile-about-list li.profile-about-list-buttons {
 .post-comments .post-comm .comment-container span.comment-author small {
     float: right;
     font-size: 13px;
-    color: #5b5b5b;
+    color: #000000;
     opacity: 0.6;
 }
 
@@ -2989,7 +2989,7 @@ ul.profile-about-list li.profile-about-list-buttons {
 .fc-toolbar h2 {
     font-size: 18px!important;
     font-weight: normal;
-    color: #5b5b5b;
+    color: #000000;
 }
 
 .fc-prev-button.fc-button.fc-button-primary,
@@ -3030,7 +3030,7 @@ ul.profile-about-list li.profile-about-list-buttons {
 }
 
 #calendar a {
-    color: #5b5b5b;
+    color: #000000;
 }
 
 .fc-col-header-cell-cushion {
@@ -3182,7 +3182,7 @@ ul.profile-about-list li.profile-about-list-buttons {
 }
 
 .tr-text a {
-    color: #5b5b5b;
+    color: #000000;
 }
 
 

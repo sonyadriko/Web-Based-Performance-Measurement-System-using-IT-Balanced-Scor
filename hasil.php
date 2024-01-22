@@ -25,7 +25,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         <meta name="keywords" content="admin,dashboard">
         <meta name="author" content="stacks">
         <!-- Title -->
-        <title>Peta Strategi</title>
+        <title>Hasil</title>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.9/justgage.min.js"></script>
@@ -133,25 +133,20 @@ while ($row = mysqli_fetch_assoc($result)) {
                                 ?>
                                 <p style="font-weight:bold">Total Hasil: <?php echo $totalHasil; ?></p>
                                 <p style="font-weight:bold">Kategori: <?php echo $kategori; ?></p>
-
                                 <?php
-$totalHasilFormatted = sprintf("%.1f", $totalHasil); // Format nilai dengan satu digit desimal
-?>
-                                <!-- <?php echo $totalHasilFormatted ?> -->
-                                <?php
-// Tentukan palet warna berdasarkan nilai totalHasil
-if ($totalHasil >= 90) {
-    $color = "#00FF00"; // Hijau Tua
-} elseif ($totalHasil >= 80) {
-    $color = "#00FF80"; // Hijau Muda
-} elseif ($totalHasil >= 70) {
-    $color = "#FFFF00"; // Kuning
-} elseif ($totalHasil >= 60) {
-    $color = "#FFA500"; // Orange
-} else {
-    $color = "#FF0000"; // Merah
-}
-?>
+                                // Tentukan palet warna berdasarkan nilai totalHasil
+                                if ($totalHasil >= 90) {
+                                    $color = "#00FF00"; // Hijau Tua
+                                } elseif ($totalHasil >= 80) {
+                                    $color = "#00FF80"; // Hijau Muda
+                                } elseif ($totalHasil >= 70) {
+                                    $color = "#FFFF00"; // Kuning
+                                } elseif ($totalHasil >= 60) {
+                                    $color = "#FFA500"; // Orange
+                                } else {
+                                    $color = "#FF0000"; // Merah
+                                }
+                                ?>
                                 <div id="gauge" style="width: 300px; height: 200px;"></div>
                                 </div>
                             </form>
@@ -171,8 +166,8 @@ if ($totalHasil >= 90) {
 </html>
 <script>
     // Menghitung persentase
-    var percentage = <?php echo $totalHasilFormatted; ?>;
-    
+    var percentage = <?php echo $totalHasil; ?>;
+
     // Inisialisasi dan konfigurasi gauge dengan jarum panah
     var gauge = new JustGage({
         id: "gauge",

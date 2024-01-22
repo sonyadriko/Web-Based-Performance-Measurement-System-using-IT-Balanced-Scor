@@ -27,7 +27,7 @@
         <meta name="author" content="stacks">
         <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <!-- Title -->
-        <title>Peta Strategi</title>
+        <title>Edit Action Plan</title>
         <!-- Styles -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700,800&display=swap" rel="stylesheet">
         <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
