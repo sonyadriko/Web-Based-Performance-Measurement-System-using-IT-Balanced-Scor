@@ -87,7 +87,13 @@ while ($row = mysqli_fetch_assoc($result)) {
                                                 $realisasi = $display['realisasi'];
                                                 $convert_t = str_replace('.', '', $target);
                                                 $convert_r = str_replace('.', '', $realisasi);
-                                                $hasil = $convert_r / $convert_t * $pembobotan;
+                                                if ($convert_t != 0) {
+                                                    $hasil = $convert_r / $convert_t * $pembobotan;
+                                                } else {
+                                                    // Handle the case where $convert_t is zero to avoid division by zero.
+                                                    // You might throw an error, set $hasil to a default value, or take other appropriate action.
+                                                }
+                                                // $hasil = $convert_r / $convert_t * $pembobotan;
                                                 $hasil3 = round($hasil, 1);
                                                 $totalHasil += $hasil3;
 
